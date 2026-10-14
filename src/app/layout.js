@@ -1,14 +1,22 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Mulish, Cormorant_Garamond } from 'next/font/google';
 import "./globals.css";
+import Header from './common-component/Header';
+import Footer from './common-component/Footer';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+
+const mulish = Mulish({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'], 
+  variable: '--font-mulish', 
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+
+
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['300', '400', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-serif',
 });
 
 export const metadata = {
@@ -20,9 +28,17 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${mulish.variable} ${cormorant.variable}`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body  className="min-h-full flex flex-col font-sans">
+      
+        <Header/>
+
+        {children}
+         
+         <Footer/>
+       
+        </body>
     </html>
   );
 }
